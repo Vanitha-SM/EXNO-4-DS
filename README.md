@@ -117,6 +117,65 @@ print(confusionMatrix)
 accuracy_score=accuracy_score(test_y,prediction)
 print(accuracy_score)
 ```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/e31a4e64-7fca-4531-a188-48a5ff07266e)
+```
+print("Misclassified Samples : %d" % (test_y !=prediction).sum())
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/d7291f25-f68a-4c7b-b781-a745058b2770)
+```
+data.shape
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/bcaaa675-3cb4-477f-83b5-5d4fdea4d996)
+```
+import pandas as pd
+from sklearn.feature_selection import SelectKBest, mutual_info_classif, f_classif
+data={
+    'Feature1': [1,2,3,4,5],
+    'Feature2': ['A','B','C','A','B'],
+    'Feature3': [0,1,1,0,1],
+    'Target'  : [0,1,1,0,1]
+}
+
+df=pd.DataFrame(data)
+x=df[['Feature1','Feature3']]
+y=df[['Target']]
+
+selector=SelectKBest(score_func=mutual_info_classif,k=1)
+x_new=selector.fit_transform(x,y)
+
+selected_feature_indices=selector.get_support(indices=True)
+
+selected_features=x.columns[selected_feature_indices]
+print("Selected Features:")
+print(selected_features)
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/9263244e-6532-4827-8413-9a0633efbf7d)
+```
+import pandas as pd
+import numpy as np
+from scipy.stats import chi2_contingency
+
+import seaborn as sns
+tips=sns.load_dataset('tips')
+tips.head()
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/f6720e9b-9748-4b5f-a1f8-4a565816f67b)
+```
+tips.time.unique()
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/f4b72a8c-b35a-40df-8649-9123983f7704)
+```
+contingency_table=pd.crosstab(tips['sex'],tips['time'])
+print(contingency_table)
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/7cb63b0d-f88d-4397-a6c5-9e77145de74d)
+```
+chi2,p,_,_=chi2_contingency(contingency_table)
+print(f"Chi-Square Statistics: {chi2}")
+print(f"P-Value: {p}")
+```
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/7a261e68-4878-4416-9e90-0a8ff56c5d74)
 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+Thus, Feature selection and Feature scaling has been used and executed in the given dataset.
+
