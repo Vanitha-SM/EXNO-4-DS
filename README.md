@@ -36,46 +36,48 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 data=pd.read_csv("/content/income(1) (1).csv",na_values=[ " ?"])
 data
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/c0be1560-2e7d-46ff-a497-aef29aa8a80e)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/ff7cccdb-bd60-45dd-9dc6-47b49a563538)
 
 ```
 data.isnull().sum()
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/b6615fa6-bca0-439e-93d9-e9bac897a698)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/59b6ad1a-bf12-48c2-a294-5aac15886114)
+
 ```
 missing=data[data.isnull().any(axis=1)]
 missing
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/21a5fac7-9da9-4b74-8d55-f48d3947ef3b)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/33a8312b-2d89-4abd-bb0d-35cdfa2b7b44)
 ```
 data2=data.dropna(axis=0)
 data2
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/e4be12ce-a8b7-495c-ac98-88439c6b1614)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/84785d2a-5779-49fa-b399-8edbd5892b9e)
 ```
 sal=data["SalStat"]
 
 data2["SalStat"]=data["SalStat"].map({' less than or equal to 50,000':0,' greater than 50,000':1})
 print(data2['SalStat'])
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/6ed747a8-5ccd-47f4-8677-2e59b8aa450a)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/dcbc0758-336f-4d51-8fe8-e685afb2ed93)
 ```
 sal2=data2['SalStat']
 
 dfs=pd.concat([sal,sal2],axis=1)
 dfs
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/4817bd9c-ebf6-4850-873f-d3b4ec85b57a)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/0f52b3b1-2144-4e94-ba27-03ca586215f0)
 
 ```
 data2
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/fbf36cc7-93d2-47de-b665-8ec09b3cd540)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/ffb9c16e-40c4-4439-a29f-b201581a12c8)
 ```
 new_data=pd.get_dummies(data2, drop_first=True)
 new_data
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/70618804-02ea-4244-971e-c0c2d35aba7f)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/de84fef7-7332-46d8-ab50-471d0169a901)
+
 ```
 columns_list=list(new_data.columns)
 print(columns_list)
@@ -103,7 +105,8 @@ KNN_classifier=KNeighborsClassifier(n_neighbors = 5)
 
 KNN_classifier.fit(train_x,train_y)
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/b9d1634e-87a4-42f6-89f9-2d05628018c5)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/4a77fca3-3948-4c11-bdc0-514a61afceab)
+
 ```
 
 prediction=KNN_classifier.predict(test_x)
@@ -159,7 +162,7 @@ import seaborn as sns
 tips=sns.load_dataset('tips')
 tips.head()
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/f6720e9b-9748-4b5f-a1f8-4a565816f67b)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/f6ad3642-5ec2-4c93-88c0-0019e3127b90)
 ```
 tips.time.unique()
 ```
@@ -168,14 +171,15 @@ tips.time.unique()
 contingency_table=pd.crosstab(tips['sex'],tips['time'])
 print(contingency_table)
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/7cb63b0d-f88d-4397-a6c5-9e77145de74d)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/9cd46b28-eda2-44b7-82c2-277dfac3bcc5)
 ```
 chi2,p,_,_=chi2_contingency(contingency_table)
 print(f"Chi-Square Statistics: {chi2}")
 print(f"P-Value: {p}")
 ```
-![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/7a261e68-4878-4416-9e90-0a8ff56c5d74)
+![image](https://github.com/Vanitha-SM/EXNO-4-DS/assets/119557985/2fff30ed-ac94-411c-9256-51bf5928d9b9)
+
 
 # RESULT:
-Thus, Feature selection and Feature scaling has been used and executed in the given dataset.
+Thus,both Feature selection and Feature scaling has been used and executed in the given dataset.
 
